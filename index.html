@@ -1,0 +1,32 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Image viewer</title>
+<style>
+  html, body { margin: 0; padding: 0; background: #fff; }
+  body { width: 1280px; height: 1280px; overflow: hidden; }
+  #stage { width: 1280px; height: 1280px; display: flex; align-items: center; justify-content: center; background: #fff; }
+  #photo { display: block; max-width: 1280px; max-height: 1280px; width: auto; height: auto; }
+  #error { color: #b00020; font: 24px/1.4 sans-serif; padding: 40px; }
+</style>
+</head>
+<body>
+<div id="stage"><img id="photo" alt=""><div id="error" hidden>Image could not be loaded.</div></div>
+<script>
+  const src = new URLSearchParams(location.search).get('src');
+  const img = document.getElementById('photo');
+  const err = document.getElementById('error');
+  if (!src) {
+    err.hidden = false;
+    err.textContent = 'No image requested.';
+  } else {
+    img.referrerPolicy = 'no-referrer';
+    img.onerror = () => { img.hidden = true; err.hidden = false; };
+    img.onload = () => { document.title = 'loaded ' + img.naturalWidth + 'x' + img.naturalHeight; };
+    img.src = src;
+  }
+</script>
+</body>
+</html>
