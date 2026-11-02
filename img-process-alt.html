@@ -1,0 +1,21 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>process-alt</title>
+<style>
+html,body{margin:0;padding:0;background:#ff00ff;width:1280px;height:1280px;overflow:hidden}
+#stage{width:1280px;height:1280px;display:flex;align-items:center;justify-content:center;background:#ff00ff}
+img{display:block;max-width:1280px;max-height:1280px;width:auto;height:auto}
+</style>
+</head>
+<body data-status="loading">
+<div id="stage"><img id="photo" src="https://wsrv.nl/?url=allproductcleaningnw.com/wp-content/uploads/2015/07/65760c10-552c-4757-b20f-e7f65198b95c.png&amp;w=1920&amp;output=png" alt=""></div>
+<script>
+var img=document.getElementById('photo');
+function done(){document.body.setAttribute('data-status','loaded');}
+if(img.complete){done();}else{img.addEventListener('load',done);img.addEventListener('error',done);}
+</script>
+</body>
+</html>
